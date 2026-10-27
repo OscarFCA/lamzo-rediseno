@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex, nofollow">
+<title>Servicios de interiorismo, paisajismo y mobiliario — Lamzo Design Studio</title>
+<meta name="description" content="Lamzo Design Studio ofrece interiorismo residencial y comercial, paisajismo y la Línea Lamzo de mobiliario contemporáneo. Naucalpan, Estado de México.">
+<link rel="canonical" href="https://www.lamzo.mx/servicios">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&amp;family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Servicios de Lamzo Design Studio","itemListElement":[{"@type":"Service","position":1,"name":"Interiorismo","provider":{"@type":"InteriorDesigner","name":"Lamzo Design Studio"},"description":"Selección de materiales, acabados, colores y texturas; mobiliario sobre diseño, mobiliario fijo a medida y accesorios decorativos."},{"@type":"Service","position":2,"name":"Paisajismo","provider":{"@type":"InteriorDesigner","name":"Lamzo Design Studio"},"description":"Paisajes que combinan elementos estéticos y funcionales con especies de cada región."},{"@type":"Service","position":3,"name":"Línea Lamzo","provider":{"@type":"InteriorDesigner","name":"Lamzo Design Studio"},"description":"Línea de mobiliario contemporáneo con variedad de colores, materiales y texturas."}]}</script>
+<style>
+html,body{margin:0;background:#FFFFFF;color:#111111;-webkit-font-smoothing:antialiased;}
+*{box-sizing:border-box;}
+a{color:#111111;text-underline-offset:5px;}
+a:hover{color:#6E665E;}
+</style>
+</helmet>
+<div style="font-family:'Montserrat',sans-serif;font-size:16px;line-height:1.7;color:#111111;">
+<dc-import name="Lamzo Header" style="position:sticky;top:0;z-index:50;" active="servicios" hint-size="100%,97px"></dc-import>
+<main>
+  <section data-screen-label="Portada" style="position:relative;height:62vh;min-height:440px;max-height:720px;background:#111111;overflow:hidden;">
+    <img src="img/sitio/1541189266403-155DX7P2D662MHV1H3IC.webp" alt="Interior residencial de Lamzo Design Studio" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.1) 100%);"></div>
+    <div style="position:absolute;inset:24px;border:1px solid rgba(255,255,255,0.28);pointer-events:none;"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(40px,6vw,96px) clamp(48px,7vh,80px);display:flex;flex-direction:column;gap:18px;color:#FFFFFF;max-width:900px;">
+      <p style="margin:0;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;">Interiorismo · Paisajismo · Mobiliario</p>
+      <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,6vw,84px);line-height:1;letter-spacing:0.1em;text-transform:uppercase;">Servicios</h1>
+      <p style="margin:0;max-width:520px;font-weight:300;text-wrap:pretty;">Interiorismo, paisajismo y mobiliario propio para residencias y espacios comerciales.</p>
+    </div>
+  </section>
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="0">
+    <section data-screen-label="{{ s.name }}" style="background:{{ s.bg }};">
+      <div style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};">
+        <div style="flex:1 1 480px;min-height:560px;position:relative;overflow:hidden;background:#EDEBE9;">
+          <div role="img" aria-label="{{ s.alt }}" style="position:absolute;inset:0;width:100%;height:100%;transition:transform 1.4s cubic-bezier(0.22,1,0.36,1);display:block;background:url({{ s.img }}) center/cover no-repeat;" style-hover="transform:scale(1.04);"></div>
+        </div>
+        <div style="flex:1 1 420px;min-width:0;padding:clamp(64px,8vw,128px) clamp(28px,6vw,112px);display:flex;flex-direction:column;justify-content:center;gap:24px;">
+          <p style="margin:0;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#6E665E;">{{ s.kicker }}</p>
+          <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,4vw,56px);letter-spacing:0.12em;text-transform:uppercase;line-height:1.05;">{{ s.name }}</h2>
+          <span style="display:block;width:64px;height:1px;background:#867D74;opacity:0.6;"></span>
+          <sc-for list="{{ s.paras }}" as="t" hint-placeholder-count="1">
+            <p style="margin:0;color:#555555;font-size:17px;line-height:1.85;max-width:480px;text-wrap:pretty;">{{ t }}</p>
+          </sc-for>
+          <a href="{{ s.href }}" style="font-size:12px;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;color:#111111;display:flex;align-items:center;gap:14px;margin-top:8px;"><span style="display:block;width:32px;height:1px;background:#111111;"></span>{{ s.cta }}</a>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+  <section style="padding:clamp(96px,12vw,160px) 20px;background:#111111;color:#FFFFFF;text-align:center;">
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;">
+      <p style="margin:0;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#D9D3CC;">Asesoría personalizada</p>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,4vw,52px);line-height:1.15;letter-spacing:0.1em;text-transform:uppercase;">Su espacio, <span style="font-style:italic;text-transform:none;letter-spacing:0.02em;">a la medida</span></h2>
+      <a href="contacto.html" style="font-size:12px;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;color:#111111;background:#FFFFFF;padding:16px 36px;" style-hover="background:#E2DEDA;color:#111111;">Agendar asesoría</a>
+    </div>
+  </section>
+</main>
+<dc-import name="Lamzo Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const b = 'img/sitio/';
+    return { services: [
+      { dir: 'row', bg: '#FFFFFF', kicker: 'Residencial y comercial', name: 'Interiorismo', img: b + '1481148239001-Q0JR9TXWP78JIP5QOJYG.webp', alt: 'Family room de Villa Acapulco', paras: ['Trabajamos para crear espacios que se acomoden con tu personalidad, gusto y tus necesidades.', 'Seleccionamos materiales, acabados colores y texturas, para diseñar espacios únicos. Con selección de mobiliario sobre diseño, mobiliario fijo a medida hasta accesorios decorativos y de ornato.'], cta: 'Ver proyectos', href: 'proyectos.html' },
+      { dir: 'row-reverse', bg: '#F7F5F3', kicker: 'Jardines y fachadas', name: 'Paisajismo', img: b + '1480973350046-TO699L8NK9KPYK05T8II.webp', alt: 'Fachada con paisajismo de Lamzo Design Studio', paras: ['Diseñamos paisajes donde se combinan elementos estéticos y funcionales, utilizando las mejores especies de cada región y aprovechando al máximo el área disponible.'], cta: 'Ver paisajismo', href: 'proyecto.html?p=paisajismo' },
+      { dir: 'row', bg: '#FFFFFF', kicker: 'Mobiliario propio', name: 'Línea Lamzo', img: b + '1632270124470-KKCK2IBWBT9KBNTNNXA6.webp', alt: 'Pieza de mobiliario de la Línea Lamzo', paras: ['Línea de mobiliario con diseño contemporáneo y exclusivo, con variedad de colores, materiales y texturas.'], cta: 'Conócelos en nuestra tienda lamzo', href: 'proyecto.html?p=mobiliario' }
+    ] };
+  }
+}
+</script>
+</body>
+</html>

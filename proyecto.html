@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex, nofollow">
+<title>Proyecto — Lamzo Design Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&amp;family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#FFFFFF;color:#111111;-webkit-font-smoothing:antialiased;}
+*{box-sizing:border-box;}
+a{color:#111111;text-underline-offset:5px;}
+a:hover{color:#6E665E;}
+</style>
+</helmet>
+<div style="font-family:'Montserrat',sans-serif;font-size:16px;line-height:1.7;color:#111111;">
+<dc-import name="Lamzo Header" style="position:sticky;top:0;z-index:50;" active="proyectos" hint-size="100%,97px"></dc-import>
+<main data-screen-label="Proyecto">
+  <article>
+    <section style="position:relative;height:calc(100vh - 97px);min-height:520px;max-height:940px;background:#2A2826;">
+      <img src="{{ p.cover }}" alt="{{ coverAlt }}" fetchpriority="high" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0) 75%);pointer-events:none;"></div>
+      <div style="position:absolute;inset:24px;border:1px solid rgba(255,255,255,0.28);pointer-events:none;"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(40px,6vw,96px) clamp(48px,7vh,88px);display:flex;flex-direction:column;gap:16px;color:#FFFFFF;pointer-events:none;">
+        <nav aria-label="Ruta" style="font-size:12px;letter-spacing:0.28em;text-transform:uppercase;display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto;">
+          <a href="proyectos.html" style="color:#FFFFFF;text-decoration:none;">Proyectos</a><span>·</span><span>{{ p.cat }}</span>
+        </nav>
+        <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(44px,7vw,104px);letter-spacing:0.1em;text-transform:uppercase;line-height:1;">{{ p.name }}</h1>
+        <sc-if value="{{ hasTipo }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,2vw,26px);">{{ p.tipo }}</p>
+        </sc-if>
+      </div>
+    </section>
+    <section style="padding:clamp(96px,12vw,160px) 20px clamp(64px,8vw,96px);">
+      <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:56px;text-align:center;">
+        <sc-if value="{{ hasResumen }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0;font-family:'Bodoni Moda',serif;font-size:clamp(24px,3vw,38px);line-height:1.35;text-wrap:balance;">{{ p.resumen }}</p>
+        </sc-if>
+        <dl style="margin:0;display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-top:1px solid #E2DEDA;border-bottom:1px solid #E2DEDA;width:100%;">
+          <sc-for list="{{ ficha }}" as="f" hint-placeholder-count="4">
+            <div style="flex:1 1 200px;padding:24px 20px;display:flex;flex-direction:column;gap:6px;">
+              <dt style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#6E665E;">{{ f.k }}</dt>
+              <dd style="margin:0;font-family:'Bodoni Moda',serif;font-size:19px;line-height:1.4;">{{ f.v }}</dd>
+            </div>
+          </sc-for>
+        </dl>
+      </div>
+    </section>
+    <sc-if value="{{ hasPremio }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:0 20px clamp(64px,8vw,96px);">
+        <a href="{{ p.premioUrl }}" style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 28px;padding:28px 32px;background:#111111;color:#FFFFFF;text-decoration:none;text-align:center;" style-hover="background:#2A2826;color:#FFFFFF;">
+          <span style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:#D9D3CC;">Reconocimiento</span>
+          <span style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:19px;line-height:1.4;">{{ p.premio }}</span>
+        </a>
+      </section>
+    </sc-if>
+    <section style="padding:0 20px clamp(96px,12vw,140px);">
+      <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:24px;">
+        <sc-for list="{{ paras }}" as="t" hint-placeholder-count="4">
+          <p style="margin:0;color:#333333;font-size:17px;line-height:1.85;text-wrap:pretty;">{{ t }}</p>
+        </sc-for>
+        <sc-if value="{{ pending }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#6E665E;border:1px solid #E2DEDA;padding:12px 14px;">Texto pendiente · copiar la descripción de lamzo.mx/{{ p.slug }} y agregar tipo, ubicación, superficie y año.</p>
+        </sc-if>
+      </div>
+    </section>
+    <section aria-label="Galería" style="padding:0 clamp(20px,4vw,64px) clamp(96px,12vw,160px);">
+      <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:24px;">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="6">
+          <div style="aspect-ratio:{{ g.ratio }};background:#EDEBE9;grid-column:{{ g.col }};position:relative;overflow:hidden;">
+            <img src="{{ g.src }}" alt="{{ g.ph }}" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </article>
+  <nav aria-label="Más proyectos" style="border-top:1px solid #E2DEDA;">
+    <div style="display:flex;flex-wrap:wrap;">
+      <a href="{{ prev.href }}" style="flex:1 1 320px;padding:clamp(48px,6vw,80px) clamp(28px,5vw,80px);text-decoration:none;display:flex;flex-direction:column;gap:8px;border-right:1px solid #E2DEDA;transition:background 0.4s ease;" style-hover="background:#F7F5F3;">
+        <span style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:#6E665E;">Anterior</span>
+        <span style="font-family:'Bodoni Moda',serif;font-size:clamp(26px,3vw,40px);letter-spacing:0.1em;text-transform:uppercase;">{{ prev.name }}</span>
+      </a>
+      <a href="{{ next.href }}" style="flex:1 1 320px;padding:clamp(48px,6vw,80px) clamp(28px,5vw,80px);text-decoration:none;display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right;transition:background 0.4s ease;" style-hover="background:#F7F5F3;">
+        <span style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:#6E665E;">Siguiente</span>
+        <span style="font-family:'Bodoni Moda',serif;font-size:clamp(26px,3vw,40px);letter-spacing:0.1em;text-transform:uppercase;">{{ next.name }}</span>
+      </a>
+    </div>
+  </nav>
+  <section style="padding:clamp(96px,12vw,160px) 20px;background:#111111;color:#FFFFFF;text-align:center;">
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;">
+      <p style="margin:0;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#D9D3CC;">Asesoría personalizada</p>
+      <p style="margin:0;font-family:'Bodoni Moda',serif;font-size:clamp(24px,3vw,36px);line-height:1.35;">Puede ponerse en contacto con nosotros para una asesoría personalizada o <span style="font-style:italic;">solicitar una cotización.</span></p>
+      <a href="contacto.html" style="font-size:12px;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;color:#111111;background:#FFFFFF;padding:16px 36px;" style-hover="background:#E2DEDA;color:#111111;">Contacto</a>
+    </div>
+  </section>
+</main>
+<dc-import name="Lamzo Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;proyecto&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;meseta&quot;,&quot;sinsentido&quot;,&quot;elevia&quot;,&quot;arquimedes&quot;,&quot;mimbres&quot;,&quot;naranjos&quot;,&quot;xcaret&quot;,&quot;aguila-real&quot;,&quot;villaacapulco&quot;,&quot;paseo-130&quot;,&quot;paseo&quot;,&quot;palma-de-rio&quot;,&quot;rocio&quot;,&quot;vila-sol&quot;,&quot;paseos-del-pedregal&quot;,&quot;altezza&quot;,&quot;paisajismo&quot;,&quot;mobiliario&quot;],&quot;default&quot;:&quot;meseta&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Vista previa&quot;}}">
+class Component extends DCLogic {
+  state = { data: [] };
+  componentDidMount() { import('./lamzo-data.js').then(m => this.setState({ data: m.PROJECTS })); }
+  componentDidUpdate() { this.syncMeta(); }
+  slug() {
+    try { const q = new URLSearchParams(window.location.search).get('p'); if (q) return q; } catch (e) {}
+    return this.props.proyecto ?? 'meseta';
+  }
+  syncMeta() {
+    const p = this.cur; if (!p || !p.name) return;
+    document.title = p.name + ' — ' + (p.tipo || p.cat) + ' · Lamzo Design Studio';
+    let s = document.getElementById('ld-proyecto');
+    if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'ld-proyecto'; document.head.appendChild(s); }
+    s.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'CreativeWork', name: p.name, url: 'https://www.lamzo.mx/' + p.slug, genre: p.cat, description: p.resumen || undefined, award: p.premio || undefined, locationCreated: p.ubicacion || undefined, creator: { '@type': 'InteriorDesigner', name: 'Lamzo Design Studio', url: 'https://www.lamzo.mx/' } });
+  }
+  renderVals() {
+    const d = this.state.data, sl = this.slug();
+    const i = Math.max(0, d.findIndex(x => x.slug === sl));
+    const p = d[i] || { name: '', cat: '', slug: sl, paras: [], fotos: 6 };
+    this.cur = p;
+    const link = x => x ? { name: x.name, href: 'proyecto.html?p=' + x.slug } : { name: '', href: '#' };
+    const pattern = [['3/2', 'span 2'], ['4/5', 'auto'], ['4/5', 'auto'], ['4/5', 'auto'], ['3/2', 'span 2']];
+    const wide = typeof window !== 'undefined' && window.innerWidth > 860;
+    return {
+      p, hasTipo: !!p.tipo, hasResumen: !!p.resumen, hasPremio: !!p.premio, pending: d.length > 0 && p.paras.length === 0,
+      coverId: 'cover-' + p.slug, coverPh: 'Portada · ' + p.name, coverAlt: p.name ? p.name + ' — ' + (p.tipo || p.cat) + ', interiorismo de Lamzo Design Studio' : '',
+      ficha: [['Categoría', p.cat], ['Ubicación', p.ubicacion], ['Superficie', p.superficie], ['Estudio', 'Lamzo Design Studio']].filter(r => r[1]).map(([k, v]) => ({ k, v })),
+      paras: p.paras,
+      gallery: Array.from({ length: Math.max(0, (p.fotos || 6) - 1) }, (_, n) => {
+        const [ratio, col] = pattern[n % 5];
+        return { id: p.slug + '-' + String(n + 2).padStart(2, '0'), ph: p.name + ', ' + (p.tipo || p.cat).toLowerCase() + ' de Lamzo Design Studio — foto ' + (n + 2), ratio, col: wide ? col : 'auto', src: p.imgs ? p.imgs[n + 1] : undefined };
+      }),
+      prev: link(d[(i - 1 + d.length) % d.length]), next: link(d[(i + 1) % d.length])
+    };
+  }
+}
+</script>
+</body>
+</html>

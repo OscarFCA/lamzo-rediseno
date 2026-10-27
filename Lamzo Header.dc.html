@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid #E2DEDA;font-family:'Bodoni Moda',serif;">
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:1240px;margin:0 auto;padding:14px 40px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:40px;">
+      <nav aria-label="Principal" style="display:flex;justify-content:flex-end;gap:40px;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;">
+        <sc-for list="{{ left }}" as="l" hint-placeholder-count="3">
+          <a href="{{ l.href }}" aria-current="{{ l.current }}" style="text-decoration:none;color:{{ l.color }};padding:8px 0;transition:color 0.25s ease;" style-hover="color:#878787;">{{ l.label }}</a>
+        </sc-for>
+      </nav>
+      <a href="./" aria-label="Lamzo Design Studio — inicio" style="display:block;line-height:0;">
+        <img src="assets/lamzo-logo.png" alt="LAMZO Design Studio" width="68" height="68" style="width:68px;height:68px;display:block;">
+      </a>
+      <nav aria-label="Secundaria" style="display:flex;justify-content:flex-start;gap:40px;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;">
+        <sc-for list="{{ right }}" as="l" hint-placeholder-count="2">
+          <a href="{{ l.href }}" aria-current="{{ l.current }}" style="text-decoration:none;color:{{ l.color }};padding:8px 0;transition:color 0.25s ease;" style-hover="color:#878787;">{{ l.label }}</a>
+        </sc-for>
+      </nav>
+    </div>
+  </sc-if>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:10px 20px;display:flex;align-items:center;justify-content:space-between;">
+      <a href="./" aria-label="Lamzo Design Studio — inicio" style="display:block;line-height:0;">
+        <img src="assets/lamzo-logo.png" alt="LAMZO Design Studio" width="56" height="56" style="width:56px;height:56px;display:block;">
+      </a>
+      <button type="button" onClick="{{ toggle }}" aria-expanded="{{ openStr }}" style="font-family:'Bodoni Moda',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;background:none;border:1px solid #E2DEDA;border-radius:0;padding:12px 18px;min-height:44px;color:#111111;cursor:pointer;">{{ menuLabel }}</button>
+    </div>
+    <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Principal" style="display:flex;flex-direction:column;border-top:1px solid #E2DEDA;font-size:14px;letter-spacing:0.2em;text-transform:uppercase;">
+        <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+          <a href="{{ l.href }}" aria-current="{{ l.current }}" style="text-decoration:none;color:{{ l.color }};padding:16px 20px;border-bottom:1px solid #E2DEDA;">{{ l.label }}</a>
+        </sc-for>
+      </nav>
+    </sc-if>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;120px&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;inicio&quot;,&quot;proyectos&quot;,&quot;servicios&quot;,&quot;nosotros&quot;,&quot;contacto&quot;],&quot;default&quot;:&quot;inicio&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, open: false };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const a = this.props.active ?? '';
+    const L = [['proyectos','Proyectos','proyectos.html'],['servicios','Servicios','servicios.html'],['nosotros','Nosotros','nosotros.html'],['contacto','Contacto','contacto.html']];
+    const links = L.map(([k, label, href]) => ({ label, href, current: k === a ? 'page' : undefined, color: k === a ? '#878787' : '#111111' }));
+    const wide = this.state.w >= 760;
+    return {
+      wide, narrow: !wide, links, left: links.slice(0, 2), right: links.slice(2),
+      open: this.state.open, openStr: this.state.open ? 'true' : 'false',
+      menuLabel: this.state.open ? 'Cerrar' : 'Menú',
+      toggle: () => this.setState(s => ({ open: !s.open }))
+    };
+  }
+}
+</script>
+</body>
+</html>
