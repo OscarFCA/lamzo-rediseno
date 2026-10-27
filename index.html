@@ -37,7 +37,7 @@ summary::-webkit-details-marker{display:none;}
 <main>
 
 <section id="inicio" data-screen-label="01 Inicio" style="position:relative;height:calc(100vh - 97px);min-height:560px;max-height:980px;background:#111111;overflow:hidden;">
-  <div style="position:absolute;inset:0;clip-path:{{ umbralClip }};background:#111111 url(img/sitio/1481148217009-5WBL8NRBMHYB5S3X5K5R.webp) center/cover no-repeat;transition:clip-path 1.4s cubic-bezier(0.22,1,0.36,1);">
+  <div style="position:absolute;inset:0;clip-path:{{ umbralClip }};background:#111111 url(https://images.squarespace-cdn.com/content/v1/5738180f8259b53089b82873/1481148217009-5WBL8NRBMHYB5S3X5K5R/GRAL+ESTANCIA+01_0026.jpg?format=2500w) center/cover no-repeat;transition:clip-path 1.4s cubic-bezier(0.22,1,0.36,1);">
     <sc-for list="{{ slides }}" as="s" hint-placeholder-count="0">
       <div role="img" aria-label="{{ s.alt }}" style="position:absolute;inset:0;width:100%;height:100%;opacity:{{ s.op }};transform:scale({{ s.scale }});transition:opacity 1.6s ease, transform 8s linear;display:block;background:url({{ s.img }}) center/cover no-repeat;"></div>
     </sc-for>
@@ -87,7 +87,7 @@ summary::-webkit-details-marker{display:none;}
     <div style="display:flex;flex-wrap:wrap;gap:24px;">
       <a href="proyecto.html?p=villaacapulco" style="flex:1.6 1 440px;min-width:0;display:flex;flex-direction:column;gap:16px;text-decoration:none;">
         <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEBE9;">
-          <img src="img/sitio/1481148227003-18UI4ITIU53VWJJS1QUV.webp" alt="Villa Acapulco, sala con vista al mar" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.04);">
+          <img src="https://images.squarespace-cdn.com/content/v1/5738180f8259b53089b82873/1481148227003-18UI4ITIU53VWJJS1QUV/GRAL+ESTANCIA+02_0045.jpg?format=1500w" alt="Villa Acapulco, sala con vista al mar" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.04);">
         </div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;">
           <span style="font-family:'Bodoni Moda',serif;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;">Villa Acapulco</span>
@@ -209,7 +209,7 @@ summary::-webkit-details-marker{display:none;}
 </section>
 
 <section id="contacto" aria-labelledby="t-contacto" data-screen-label="09 Contacto" style="position:relative;min-height:620px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#111111;">
-  <img src="img/sitio/1481148240715-WLTSZOCF4LCX6Y2X2HSV.webp" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+  <img src="https://images.squarespace-cdn.com/content/v1/5738180f8259b53089b82873/1481148240715-WLTSZOCF4LCX6Y2X2HSV/GRAL+REC+PRINC+01_0102.jpg?format=2500w" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
   <div style="position:absolute;inset:0;background:rgba(0,0,0,0.55);"></div>
   <div style="position:absolute;inset:24px;border:1px solid rgba(255,255,255,0.24);pointer-events:none;"></div>
   <div style="position:relative;max-width:720px;padding:96px 28px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;color:#FFFFFF;">
@@ -240,28 +240,28 @@ class Component extends DCLogic {
     const tu = (this.props.voz ?? 'usted') === 'tú';
     const reveal = this.props.umbral ?? true;
     const open = !reveal || this.state.open;
-    const sq = 'img/sitio/';
+    const sq = 'https://images.squarespace-cdn.com/content/v1/5738180f8259b53089b82873/';
     const proj = (slug, name, meta) => ({ name, meta, img: 'img/' + slug + '/portada-800.webp', alt: name + ' — ' + meta + ', proyecto de Lamzo Design Studio', href: 'proyecto.html?p=' + slug });
     const va = 'proyecto.html?p=villaacapulco';
     const S = [
-      [sq + '1481148217009-5WBL8NRBMHYB5S3X5K5R.webp', 'Villa Acapulco', va, 'Estancia de Villa Acapulco'],
-      [sq + '1541189266403-155DX7P2D662MHV1H3IC.webp', 'Interiorismo', 'servicios.html', 'Interior residencial de Lamzo Design Studio'],
-      [sq + '1481148229474-TN6QL68TZJQFRCAAU1C2.webp', 'Villa Acapulco', va, 'Sala de Villa Acapulco'],
-      [sq + '1480973350046-TO699L8NK9KPYK05T8II.webp', 'Paisajismo', 'proyecto.html?p=paisajismo', 'Fachada con paisajismo de Lamzo'],
-      [sq + '1481148239001-Q0JR9TXWP78JIP5QOJYG.webp', 'Villa Acapulco', va, 'Family room de Villa Acapulco'],
-      [sq + '1481148240715-WLTSZOCF4LCX6Y2X2HSV.webp', 'Villa Acapulco', va, 'Recámara principal de Villa Acapulco']
+      [sq + '1481148217009-5WBL8NRBMHYB5S3X5K5R/GRAL+ESTANCIA+01_0026.jpg', 'Villa Acapulco', va, 'Estancia de Villa Acapulco'],
+      [sq + '1541189266403-155DX7P2D662MHV1H3IC/05.jpg', 'Interiorismo', 'servicios.html', 'Interior residencial de Lamzo Design Studio'],
+      [sq + '1481148229474-TN6QL68TZJQFRCAAU1C2/GRAL+ESTANCIA+03_0055.jpg', 'Villa Acapulco', va, 'Sala de Villa Acapulco'],
+      [sq + '1480973350046-TO699L8NK9KPYK05T8II/FACHADA+02.jpg', 'Paisajismo', 'proyecto.html?p=paisajismo', 'Fachada con paisajismo de Lamzo'],
+      [sq + '1481148239001-Q0JR9TXWP78JIP5QOJYG/GRAL+FAM+ROOM+01_0085.jpg', 'Villa Acapulco', va, 'Family room de Villa Acapulco'],
+      [sq + '1481148240715-WLTSZOCF4LCX6Y2X2HSV/GRAL+REC+PRINC+01_0102.jpg', 'Villa Acapulco', va, 'Recámara principal de Villa Acapulco']
     ];
     const cur = this.state.i;
-    const slides = S.map(([img, name, href, alt], k) => ({ img, name, href, alt, op: k === cur ? 1 : 0, scale: k === cur ? '1.06' : '1', sel: k === cur ? 'true' : 'false', bar: k === cur ? '#FFFFFF' : 'rgba(255,255,255,0.4)', label: 'Foto ' + (k + 1) + ' · ' + name, go: () => { clearInterval(this.t); this.setState({ i: k }); } }));
+    const slides = S.map(([img, name, href, alt], k) => ({ img: img + '?format=2500w', name, href, alt, op: k === cur ? 1 : 0, scale: k === cur ? '1.06' : '1', sel: k === cur ? 'true' : 'false', bar: k === cur ? '#FFFFFF' : 'rgba(255,255,255,0.4)', label: 'Foto ' + (k + 1) + ' · ' + name, go: () => { clearInterval(this.t); this.setState({ i: k }); } }));
     return {
       slides, slide: slides[cur],
       umbralClip: open ? 'inset(0 0 0 0)' : 'inset(0 42% 0 42%)',
       sideProjects: [proj('elevia', 'Elevia', 'Departamento · Interlomas'), proj('mimbres', 'Mimbres', 'Residencia en bosque de encinos')],
       rowProjects: [proj('naranjos', 'Naranjos', 'Residencia · 992 m² en cuatro niveles'), proj('aguila-real', 'Águila Real', 'Residencia en bosque de encinos'), proj('sinsentido', 'SinSentido', 'Restaurante · 400 m²')],
       services: [
-        { name: 'Interiorismo', img: sq + '1541189266403-155DX7P2D662MHV1H3IC.webp', alt: 'Proyecto de interiorismo de Lamzo Design Studio', text: 'Trabajamos para crear espacios que se acomoden con tu personalidad, gusto y tus necesidades.', cta: 'Conocer más', href: 'servicios.html' },
-        { name: 'Paisajismo', img: sq + '1480973350046-TO699L8NK9KPYK05T8II.webp', alt: 'Fachada con paisajismo diseñado por Lamzo', text: 'Diseñamos paisajes donde se combinan elementos estéticos y funcionales, utilizando las mejores especies de cada región y aprovechando al máximo el área disponible.', cta: 'Ver jardines', href: 'proyecto.html?p=paisajismo' },
-        { name: 'Línea Lamzo', img: sq + '1632270124470-KKCK2IBWBT9KBNTNNXA6.webp', alt: 'Pieza de mobiliario de la Línea Lamzo', text: 'Línea de mobiliario con diseño contemporáneo y exclusivo, con variedad de colores, materiales y texturas.', cta: 'Ver mobiliario', href: 'proyecto.html?p=mobiliario' }
+        { name: 'Interiorismo', img: sq + '1541189266403-155DX7P2D662MHV1H3IC/05.jpg?format=1000w', alt: 'Proyecto de interiorismo de Lamzo Design Studio', text: 'Trabajamos para crear espacios que se acomoden con tu personalidad, gusto y tus necesidades.', cta: 'Conocer más', href: 'servicios.html' },
+        { name: 'Paisajismo', img: sq + '1480973350046-TO699L8NK9KPYK05T8II/FACHADA+02.jpg?format=1000w', alt: 'Fachada con paisajismo diseñado por Lamzo', text: 'Diseñamos paisajes donde se combinan elementos estéticos y funcionales, utilizando las mejores especies de cada región y aprovechando al máximo el área disponible.', cta: 'Ver jardines', href: 'proyecto.html?p=paisajismo' },
+        { name: 'Línea Lamzo', img: sq + '1632270124470-KKCK2IBWBT9KBNTNNXA6/WhatsApp+Image+2021-09-21+at+5.53.08+PM.jpeg?format=1000w', alt: 'Pieza de mobiliario de la Línea Lamzo', text: 'Línea de mobiliario con diseño contemporáneo y exclusivo, con variedad de colores, materiales y texturas.', cta: 'Ver mobiliario', href: 'proyecto.html?p=mobiliario' }
       ],
       press: [
         { outlet: 'Obras · Expansión', title: 'Meseta, Obra del Año 2018 en Interiorismo Residencial', url: 'https://obras.expansion.mx/interiorismo/2018/10/09/meseta-el-hogar-perfecto-y-obra-del-ano-en-interiorismo-residencial' },
