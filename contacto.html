@@ -20,6 +20,9 @@ html,body{margin:0;background:#FFFFFF;color:#111111;-webkit-font-smoothing:antia
 a{color:#111111;text-underline-offset:5px;}
 a:hover{color:#6E665E;}
 input,textarea,select{font:inherit;}
+@media (min-width:960px){
+  [data-r=contacto-texto]{position:sticky!important;top:97px;height:calc(100vh - 97px)!important;min-height:560px!important;}
+}
 </style>
 </helmet>
 <div style="font-family:'Montserrat',sans-serif;font-size:16px;line-height:1.7;color:#111111;">
@@ -29,7 +32,7 @@ input,textarea,select{font:inherit;}
     <img src="img/sitio/1481148190401-4EDEB5NIZZE1CLEDAFU9.webp" alt="Detalle de recámara, Villa Acapulco" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.3) 100%);"></div>
     <div style="position:absolute;inset:24px;border:1px solid rgba(255,255,255,0.28);pointer-events:none;"></div>
-    <div style="position:relative;height:100%;min-height:inherit;padding:clamp(64px,8vw,112px) clamp(40px,6vw,96px);display:flex;flex-direction:column;justify-content:flex-end;gap:36px;">
+    <div data-r="contacto-texto" style="position:relative;height:100%;min-height:inherit;padding:clamp(64px,8vw,112px) clamp(40px,6vw,96px);display:flex;flex-direction:column;justify-content:flex-end;gap:36px;">
       <div style="display:flex;flex-direction:column;gap:18px;">
         <p style="margin:0;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;">Asesoría personalizada</p>
         <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:0.1em;text-transform:uppercase;">Contacto</h1>
