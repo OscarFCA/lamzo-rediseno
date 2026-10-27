@@ -196,7 +196,7 @@ summary::-webkit-details-marker{display:none;}
     </div>
     <div style="border-top:1px solid #E2DEDA;">
       <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
-        <details open="{{ q.open }}" style="border-bottom:1px solid #E2DEDA;">
+        <details name="faq" open="{{ q.open }}" style="border-bottom:1px solid #E2DEDA;">
           <summary style="cursor:pointer;list-style:none;padding:28px 0;display:flex;justify-content:space-between;align-items:baseline;gap:24px;font-family:'Bodoni Moda',serif;font-size:21px;line-height:1.4;">
             <span>{{ q.q }}</span>
             <span aria-hidden="true" style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;color:#867D74;">+</span>
