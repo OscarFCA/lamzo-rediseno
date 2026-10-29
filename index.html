@@ -31,6 +31,7 @@ a{color:#111111;text-underline-offset:5px;}
 a:hover{color:#6E665E;}
 summary::-webkit-details-marker{display:none;}
 @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
+@media (max-width:600px){[data-r=tira-flecha]{display:none!important;}}
 </style>
 </helmet>
 
@@ -176,6 +177,39 @@ summary::-webkit-details-marker{display:none;}
   </div>
 </section>
 
+<section id="videos" aria-labelledby="t-videos" data-screen-label="06b Videos" style="padding:clamp(120px,14vw,180px) 0;">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,64px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 40px;">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:640px;">
+      <p style="margin:0;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#6E665E;">En video</p>
+      <h2 id="t-videos" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,4vw,52px);line-height:1.1;letter-spacing:0.1em;text-transform:uppercase;">Lamzo <span style="font-style:italic;text-transform:none;letter-spacing:0.02em;">en video</span></h2>
+      <p style="margin:0;color:#555555;text-wrap:pretty;">Entrevistas, reportajes y el canal del estudio.</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button type="button" onClick="{{ tiraAnt }}" aria-label="Videos anteriores" data-r="tira-flecha" style="width:48px;height:48px;border:1px solid #E2DEDA;background:#FFFFFF;color:#111111;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;">‹</button>
+      <button type="button" onClick="{{ tiraSig }}" aria-label="Más videos" data-r="tira-flecha" style="width:48px;height:48px;border:1px solid #E2DEDA;background:#FFFFFF;color:#111111;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;">›</button>
+      <a href="nosotros.html#videos" style="font-size:12px;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;color:#111111;display:flex;align-items:center;gap:14px;margin-left:16px;"><span style="display:block;width:32px;height:1px;background:#111111;"></span>Ver todos</a>
+    </div>
+  </div>
+  <ul data-r="tira-videos" style="list-style:none;margin:48px 0 0;padding:0 clamp(20px,4vw,64px) 12px;display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 clamp(20px,4vw,64px);scrollbar-width:thin;">
+    <sc-for list="{{ vTodos }}" as="v" hint-placeholder-count="3">
+          <li style="flex:0 0 clamp(260px,30vw,380px);min-width:0;scroll-snap-align:start;">
+            <button type="button" onClick="{{ v.play }}" aria-label="{{ v.aria }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:12px;width:100%;color:#111111;">
+              <span style="position:relative;display:block;aspect-ratio:16/9;background:#2A2826;overflow:hidden;">
+                <img src="{{ v.mini }}" alt="{{ v.titulo }}" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.04);">
+                <span aria-hidden="true" style="position:absolute;left:14px;bottom:14px;width:48px;height:48px;border:1px solid rgba(255,255,255,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(17,17,17,0.4);color:#FFFFFF;font-size:14px;padding-left:3px;box-sizing:border-box;">▶</span>
+                <span style="position:absolute;right:10px;bottom:10px;background:rgba(17,17,17,0.78);color:#FFFFFF;font-size:11px;letter-spacing:0.08em;padding:3px 8px;">{{ v.duracion }}</span>
+              </span>
+              <span style="font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#6E665E;">{{ v.meta }}</span>
+              <span style="font-family:'Bodoni Moda',serif;font-size:19px;line-height:1.35;">{{ v.titulo }}</span>
+              <sc-if value="{{ v.hasNota }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:14px;line-height:1.6;color:#555555;">{{ v.nota }}</span>
+              </sc-if>
+            </button>
+          </li>
+        </sc-for>
+  </ul>
+</section>
+
 <section id="en-breve" aria-labelledby="t-breve" data-screen-label="07 En breve" style="padding:clamp(120px,14vw,180px) clamp(20px,4vw,64px);background:#F7F5F3;">
   <div style="max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px 96px;align-items:flex-start;">
     <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:22px;">
@@ -227,6 +261,15 @@ summary::-webkit-details-marker{display:none;}
   </div>
 </section>
 
+  <sc-if value="{{ vOn }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="{{ vTitulo }}" onClick="{{ vCerrarFondo }}" style="position:fixed;inset:0;z-index:1000;background:rgba(12,11,10,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:64px 16px;">
+      <div style="width:min(1200px,100%,calc((100vh - 180px) * 16 / 9));aspect-ratio:16/9;background:#000000;">
+        <iframe src="{{ vSrc }}" title="{{ vTitulo }}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" style="width:100%;height:100%;border:0;display:block;"></iframe>
+      </div>
+      <p style="margin:0;max-width:900px;text-align:center;color:#D9D3CC;font-size:13px;letter-spacing:0.06em;line-height:1.5;pointer-events:none;">{{ vTitulo }} · {{ vCanalNombre }}</p>
+      <button type="button" onClick="{{ vCerrar }}" aria-label="Cerrar video" style="position:absolute;display:flex;align-items:center;justify-content:center;color:#FFFFFF;background:rgba(17,17,17,0.45);border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-family:Montserrat,sans-serif;font-weight:300;top:12px;right:12px;width:48px;height:48px;font-size:20px;">✕</button>
+    </div>
+  </sc-if>
 </main>
 
 <dc-import name="Lamzo Footer" hint-size="100%,320px"></dc-import>
@@ -234,12 +277,32 @@ summary::-webkit-details-marker{display:none;}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;voz&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;usted&quot;,&quot;tú&quot;],&quot;default&quot;:&quot;usted&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;umbral&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Movimiento&quot;}}">
 class Component extends DCLogic {
-  state = { open: false, i: 0 };
+  state = { open: false, i: 0, vids: null, video: null };
+  montarVideos() {
+    import('./lamzo-videos.js').then(m => this.setState({ vids: m }));
+    this.onKeyV = e => { if (e.key === 'Escape' && this.state.video) this.setState({ video: null }); };
+    window.addEventListener('keydown', this.onKeyV);
+  }
+  componentDidUpdate() { document.body.style.overflow = this.state.video ? 'hidden' : ''; }
+  videoVals() {
+    const m = this.state.vids || { CANAL: [], MENCIONES: [] }, v = this.state.video;
+    const tarjeta = x => ({ ...x, mini: 'img/videos/' + x.id + '.webp', meta: x.canal + ' · ' + x.fecha.slice(0, 4), hasNota: !!x.nota, nota: x.nota || '', aria: 'Ver video: ' + x.titulo + ' (' + x.canal + ')', play: () => this.setState({ video: x }) });
+    const tira = d => () => { const t = document.querySelector('[data-r=tira-videos]'); if (t) t.scrollBy({ left: d * t.clientWidth * 0.85, behavior: 'smooth' }); };
+    return {
+      vMenciones: m.MENCIONES.map(tarjeta), vCanal: m.CANAL.map(tarjeta), vTodos: m.MENCIONES.concat(m.CANAL).map(tarjeta),
+      vCanalUrl: m.CANAL_URL || 'https://www.youtube.com/@lamzodesign8673',
+      vOn: !!v, vSrc: v ? 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0' : '', vTitulo: v ? v.titulo : '', vCanalNombre: v ? v.canal : '',
+      vCerrarFondo: e => { if (!e || e.target === e.currentTarget) this.setState({ video: null }); },
+      vCerrar: e => { if (e) e.stopPropagation(); this.setState({ video: null }); },
+      tiraAnt: tira(-1), tiraSig: tira(1)
+    };
+  }
   componentDidMount() {
+    this.montarVideos();
     setTimeout(() => this.setState({ open: true }), 150);
     this.t = setInterval(() => this.setState(s => ({ i: (s.i + 1) % 6 })), 6500);
   }
-  componentWillUnmount() { clearInterval(this.t); }
+  componentWillUnmount() { clearInterval(this.t); window.removeEventListener('keydown', this.onKeyV); }
   renderVals() {
     const tu = (this.props.voz ?? 'usted') === 'tú';
     const reveal = this.props.umbral ?? true;
@@ -258,6 +321,7 @@ class Component extends DCLogic {
     const cur = this.state.i;
     const slides = S.map(([img, name, href, alt], k) => ({ img: img + '?format=2500w', name, href, alt, op: k === cur ? 1 : 0, scale: k === cur ? '1.06' : '1', sel: k === cur ? 'true' : 'false', bar: k === cur ? '#FFFFFF' : 'rgba(255,255,255,0.4)', label: 'Foto ' + (k + 1) + ' · ' + name, go: () => { clearInterval(this.t); this.setState({ i: k }); } }));
     return {
+      ...this.videoVals(),
       slides, slide: slides[cur],
       umbralClip: open ? 'inset(0 0 0 0)' : 'inset(0 42% 0 42%)',
       sideProjects: [proj('elevia', 'Elevia', 'Departamento · Interlomas'), proj('mimbres', 'Mimbres', 'Residencia en bosque de encinos')],
