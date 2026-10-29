@@ -182,7 +182,7 @@ summary::-webkit-details-marker{display:none;}
     <div style="display:flex;flex-direction:column;gap:18px;max-width:640px;">
       <p style="margin:0;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#6E665E;">En video</p>
       <h2 id="t-videos" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,4vw,52px);line-height:1.1;letter-spacing:0.1em;text-transform:uppercase;">Lamzo <span style="font-style:italic;text-transform:none;letter-spacing:0.02em;">en video</span></h2>
-      <p style="margin:0;color:#555555;text-wrap:pretty;">Entrevistas, reportajes y el canal del estudio.</p>
+      <p style="margin:0;color:#555555;text-wrap:pretty;">El canal del estudio, entrevistas y reportajes.</p>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <button type="button" onClick="{{ tiraAnt }}" aria-label="Videos anteriores" data-r="tira-flecha" style="width:48px;height:48px;border:1px solid #E2DEDA;background:#FFFFFF;color:#111111;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;">‹</button>
@@ -289,7 +289,7 @@ class Component extends DCLogic {
     const tarjeta = x => ({ ...x, mini: 'img/videos/' + x.id + '.webp', meta: x.canal + ' · ' + x.fecha.slice(0, 4), hasNota: !!x.nota, nota: x.nota || '', aria: 'Ver video: ' + x.titulo + ' (' + x.canal + ')', play: () => this.setState({ video: x }) });
     const tira = d => () => { const t = document.querySelector('[data-r=tira-videos]'); if (t) t.scrollBy({ left: d * t.clientWidth * 0.85, behavior: 'smooth' }); };
     return {
-      vMenciones: m.MENCIONES.map(tarjeta), vCanal: m.CANAL.map(tarjeta), vTodos: m.MENCIONES.concat(m.CANAL).map(tarjeta),
+      vMenciones: m.MENCIONES.map(tarjeta), vCanal: m.CANAL.map(tarjeta), vTodos: m.CANAL.concat(m.MENCIONES).map(tarjeta),
       vCanalUrl: m.CANAL_URL || 'https://www.youtube.com/@lamzodesign8673',
       vOn: !!v, vSrc: v ? 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0' : '', vTitulo: v ? v.titulo : '', vCanalNombre: v ? v.canal : '',
       vCerrarFondo: e => { if (!e || e.target === e.currentTarget) this.setState({ video: null }); },
